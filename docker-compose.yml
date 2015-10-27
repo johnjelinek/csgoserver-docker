@@ -1,0 +1,9 @@
+service:
+  image: johnjelinek/csgoserver
+  ports:
+    - "27015:27015/tcp"
+    - "27015:27015/udp"
+  volumes:
+    - /var/docker/csgoserver:/home/csgoserver
+  entrypoint: /home/csgoserver/serverfiles/srcds_run
+  command: -game csgo -usercon -strictportbind -ip 0.0.0.0 -port 27015 +clientport 27005 +tv_port 27020 -tickrate 64 +map de_dust2 +servercfgfile csgo-server.cfg -maxplayers_override 16 +mapgroup random_classic +game_mode 0 +game_type 0 +host_workshop_collection  +workshop_start_map  -authkey
