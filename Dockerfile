@@ -22,7 +22,10 @@ RUN \
   rm -fr /tmp/*
 
 # Create user to run as
-RUN groupadd -r csgoserver && useradd -rm -g csgoserver csgoserver
+RUN \
+  groupadd -r csgoserver && \
+  useradd -rm -g csgoserver csgoserver && \
+  echo "csgoserver ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Install CSGO Server
 RUN wget http://gameservermanagers.com/dl/csgoserver && \
